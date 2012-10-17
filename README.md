@@ -17,5 +17,6 @@ Ths program require the CHARMM19 parameters as found at http://mackerell.umaryla
 You can download the latest prms (e.g. toppar_c36_aug12.tgz ), extract the directory.
 
 Then, run:
+
     cp toppar/toph19.inp params/pdbamino.rtf
     cat toppar/param19.inp toppar/ace/acepar19.inp > params/parm.prm
