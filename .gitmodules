@@ -1,0 +1,3 @@
+[submodule "libmol"]
+	path = libmol
+	url = git://github.com/StructuralBioinformaticsLab/libmol.git
