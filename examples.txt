@@ -1,46 +1,46 @@
 -----------------------------------------------------------------------------------
-./mintest
+./test
 -----------------------------------------------------------------------------------
 
-Usage: ./mintest [ options ]
+Usage: ./test [ options ]
 
 Options:
-	--pdb filename      : input PDB file ( mandatory )
-	--fpdb filename     : fixed part of the input PDB ( optional, default = filename ( -fixed.pdb ) derived from input PDB )
-	--nofixed           : input PDB has no fixed part ( optional, default = has fixed part ( see --fpdb ) )
-	--psf filename      : CHARMM PSF file for the input PDB ( optional, default = filename ( .psf ) derived from input PDB )
-	--mol2 filename     : MOL2 file for the input PDB ( optional, for --hbond only, default = filename ( .mol2 ) derived from input PDB )
+        --pdb filename      : input PDB file ( mandatory )
+        --fpdb filename     : fixed part of the input PDB ( optional, default = filename ( -fixed.pdb ) derived from input PDB )
+        --nofixed           : input PDB has no fixed part ( optional, default = has fixed part ( see --fpdb ) )
+        --psf filename      : CHARMM PSF file for the input PDB ( optional, default = filename ( .psf ) derived from input PDB )
+        --mol2 filename     : MOL2 file for the input PDB ( optional, for --hbond only, default = filename ( .mol2 ) derived from input PDB )
 
-	--outn filename     : output PDB file from nblists minimization ( optional, default = filename ( -outn.pdb ) derived from input PDB )
-	--outo filename     : output PDB file from octree minimization ( optional, default = filename ( -outo.pdb ) derived from input PDB )
+        --outn filename     : output PDB file from nblists minimization ( optional, default = filename ( -outn.pdb ) derived from input PDB )
+        --outo filename     : output PDB file from octree minimization ( optional, default = filename ( -outo.pdb ) derived from input PDB )
 
-	--prm filename      : PRM file ( optional, default = params/parm.prm )
-	--rtf filename      : RTF file ( optional, default = params/pdbamino.rtf )
-	--aprm filename     : APRM file ( optional, default = params/atoms.0.0.6.prm.ms.3cap+0.5ace.Hr0rec )
+        --prm filename      : PRM file ( optional, default = params/parm.prm )
+        --rtf filename      : RTF file ( optional, default = params/pdbamino.rtf )
+        --aprm filename     : APRM file ( optional, default = params/atoms.0.0.6.prm.ms.3cap+0.5ace.Hr0rec )
 
-	--iter number       : maximum number of iterations of the minimizer ( optional, default = 100 )
+        --iter number       : maximum number of iterations of the minimizer ( optional, default = 100 )
 
-	--nonblist          : no nblists based minimization ( optional, default = perform nblists based minimization )
-	--nooct             : no octree based minimization ( optional, default = perform octree based minimization )
+        --nonblist          : no nblists based minimization ( optional, default = perform nblists based minimization )
+        --nooct             : no octree based minimization ( optional, default = perform octree based minimization )
 
-	--vdw               : use van der Waals energy ( optional, default = do not use vdw )
-	--elec              : use electrostatics ( optional, default = do not use electrostatics )
-	--hbond             : use hbond energy ( optional, default = do not use hbond )
+        --vdw               : use van der Waals energy ( optional, default = do not use vdw )
+        --elec              : use electrostatics ( optional, default = do not use electrostatics )
+        --hbond             : use hbond energy ( optional, default = do not use hbond )
 
-	--vdwcut value(s)   : distance cutoff(s) ( in angstroms ) for van der Waals energy ( optional, default = 12.00 )
-	--eleccut value(s)  : distance cutoff(s) ( in angstroms ) for electrostatics ( optional, default = 15.00 )
-	--hbondcut value(s) : distance cutoff(s) ( in angstroms ) for hbond energy ( optional, default = 3.00 )
+        --vdwcut value(s)   : distance cutoff(s) ( in angstroms ) for van der Waals energy ( optional, default = 12.00 )
+        --eleccut value(s)  : distance cutoff(s) ( in angstroms ) for electrostatics ( optional, default = 15.00 )
+        --hbondcut value(s) : distance cutoff(s) ( in angstroms ) for hbond energy ( optional, default = 3.00 )
 
-	--vdwaprx value     : distance cutoff approximation factor ( in ( 0, 1 ] ) for van der Waals energy ( optional, default = 1.0 )
-	--elecaprx value    : distance cutoff approximation factor ( in ( 0, 1 ] ) for electrostatics ( optional, default = 1.0 )
+        --vdwaprx value     : distance cutoff approximation factor ( in ( 0, 1 ] ) for van der Waals energy ( optional, default = 1.0 )
+        --elecaprx value    : distance cutoff approximation factor ( in ( 0, 1 ] ) for electrostatics ( optional, default = 1.0 )
 
-	--help              : print this help screen
+        --help              : print this help screen
 
 
 ###################################################################################
 
 -----------------------------------------------------------------------------------
-./mintest --pdb examples/1acb_b_rmin.pdb --vdw
+./test --pdb examples/1acb_b_rmin.pdb --vdw
 -----------------------------------------------------------------------------------
 
 Paremeters:
@@ -59,26 +59,40 @@ Paremeters:
 
 Processing params/atoms.0.0.6.prm.ms.3cap+0.5ace.Hr0rec... done
 Processing examples/1acb_b_rmin.pdb... done
-Processing examples/1acb_b_rmin.psf, params/parm.prm and params/pdbamino.rtf... 0.470 sec
+Processing examples/1acb_b_rmin.psf, params/parm.prm and params/pdbamino.rtf... 11.070 sec
 Processing examples/1acb_b_rmin-fixed.pdb... done
 
 ### START: RUN 1 ###
 
-Building nblists... 0.010 sec
+Building nblists... 0.030 sec
 Building octree... 0.000 sec
 
 
-Applying LBFGS with NBLISTS ( initial energy = 83.101615 kcal/mol )...
+Applying LBFGS with NBLISTS ( initial energy = 78.861868 kcal/mol )...
 
+*************************************************
+  n = 1893   number of corrections = 5
+       initial values
+ f =  78.862   gnorm =  866.608
+*************************************************
+	i	nfn	func	gnorm	steplength
+	 1	 3	 -95.807605556954	 424.380570264514	0.000481356627
 
-done ( time = 0.530 sec, final energy = -657.920622 kcal/mol )
+done ( time = 0.620 sec, final energy = -514.414094 kcal/mol )
 
 Writing examples/1acb_b_rmin-outn.pdb... done
 
-Applying LBFGS with OCTREES ( initial energy = 83.101615 kcal/mol )...
+Applying LBFGS with OCTREES ( initial energy = 78.861868 kcal/mol )...
 
+*************************************************
+  n = 1893   number of corrections = 5
+       initial values
+ f =  78.862   gnorm =  866.608
+*************************************************
+	i	nfn	func	gnorm	steplength
+	 1	 3	 -95.807605556956	 424.380570264511	0.000481356627
 
-done ( time = 0.700 sec, final energy = -657.920616 kcal/mol )
+done ( time = 0.740 sec, final energy = -514.414091 kcal/mol )
 
 Writing examples/1acb_b_rmin-outo.pdb... done
 
@@ -93,22 +107,22 @@ Distance cutoffs:
 	nblist = 12.00 A
 
 NBLIST results:
-	construction time = 0.010 sec
-	running time = 0.530 sec
+	construction time = 0.030 sec
+	running time = 0.620 sec
 	size = 531132 bytes ( 518.68 KB, 0.51 MB ), npairs = 113204
-	initial energy = 83.101615 kcal/mol
-	final energy = -657.920622 kcal/mol
+	initial energy = 78.861868 kcal/mol
+	final energy = -514.414094 kcal/mol
 
 OCTREE results:
 	construction time = 0.000 sec
-	running time = 0.700 sec
+	running time = 0.740 sec
 	size = 36952 bytes ( 36.09 KB, 0.04 MB )
-	initial energy = 83.101615 kcal/mol
-	final energy = -657.920616 kcal/mol
+	initial energy = 78.861868 kcal/mol
+	final energy = -514.414091 kcal/mol
 
 NBLIST vs. OCTREE:
 	construction-time( nblist ) / construction-time( octree ) = inf
-	running-time( nblist ) / running-time( octree ) = 0.76
+	running-time( nblist ) / running-time( octree ) = 0.84
 	size( nblist ) / size( octree ) = 14.37
 
 ### END: RUN 1 ###
@@ -117,7 +131,7 @@ NBLIST vs. OCTREE:
 ###################################################################################
 
 -----------------------------------------------------------------------------------
-./mintest --pdb examples/1acb_b_rmin.pdb --nofixed --vdw
+./test --pdb examples/1acb_b_rmin.pdb --nofixed --vdw
 -----------------------------------------------------------------------------------
 
 Paremeters:
@@ -136,7 +150,7 @@ Paremeters:
 
 Processing params/atoms.0.0.6.prm.ms.3cap+0.5ace.Hr0rec... done
 Processing examples/1acb_b_rmin.pdb... done
-Processing examples/1acb_b_rmin.psf, params/parm.prm and params/pdbamino.rtf... 0.480 sec
+Processing examples/1acb_b_rmin.psf, params/parm.prm and params/pdbamino.rtf... 11.120 sec
 
 ### START: RUN 1 ###
 
@@ -144,17 +158,31 @@ Building nblists... 0.040 sec
 Building octree... 0.000 sec
 
 
-Applying LBFGS with NBLISTS ( initial energy = 388.318570 kcal/mol )...
+Applying LBFGS with NBLISTS ( initial energy = 430.332587 kcal/mol )...
 
+*************************************************
+  n = 8385   number of corrections = 5
+       initial values
+ f =  430.333   gnorm =  2239.021
+*************************************************
+	i	nfn	func	gnorm	steplength
+	 1	 2	 -543.681313087073	 853.446737385125	0.000446623828
 
-done ( time = 2.190 sec, final energy = -2814.381056 kcal/mol )
+done ( time = 2.340 sec, final energy = -2242.950105 kcal/mol )
 
 Writing examples/1acb_b_rmin-outn.pdb... done
 
-Applying LBFGS with OCTREES ( initial energy = 388.318570 kcal/mol )...
+Applying LBFGS with OCTREES ( initial energy = 430.332587 kcal/mol )...
 
+*************************************************
+  n = 8385   number of corrections = 5
+       initial values
+ f =  430.333   gnorm =  2239.021
+*************************************************
+	i	nfn	func	gnorm	steplength
+	 1	 2	 -543.681313087036	 853.446737385125	0.000446623828
 
-done ( time = 3.000 sec, final energy = -2814.381146 kcal/mol )
+done ( time = 3.090 sec, final energy = -2242.950049 kcal/mol )
 
 Writing examples/1acb_b_rmin-outo.pdb... done
 
@@ -170,21 +198,21 @@ Distance cutoffs:
 
 NBLIST results:
 	construction time = 0.040 sec
-	running time = 2.190 sec
+	running time = 2.340 sec
 	size = 1969792 bytes ( 1923.62 KB, 1.88 MB ), npairs = 472869
-	initial energy = 388.318570 kcal/mol
-	final energy = -2814.381056 kcal/mol
+	initial energy = 430.332587 kcal/mol
+	final energy = -2242.950105 kcal/mol
 
 OCTREE results:
 	construction time = 0.000 sec
-	running time = 3.000 sec
+	running time = 3.090 sec
 	size = 36952 bytes ( 36.09 KB, 0.04 MB )
-	initial energy = 388.318570 kcal/mol
-	final energy = -2814.381146 kcal/mol
+	initial energy = 430.332587 kcal/mol
+	final energy = -2242.950049 kcal/mol
 
 NBLIST vs. OCTREE:
 	construction-time( nblist ) / construction-time( octree ) = inf
-	running-time( nblist ) / running-time( octree ) = 0.73
+	running-time( nblist ) / running-time( octree ) = 0.76
 	size( nblist ) / size( octree ) = 53.31
 
 ### END: RUN 1 ###
@@ -193,7 +221,7 @@ NBLIST vs. OCTREE:
 ###################################################################################
 
 -----------------------------------------------------------------------------------
-./mintest --pdb examples/1acb_b_rmin.pdb --nofixed --vdw --hbond
+./test --pdb examples/1acb_b_rmin.pdb --nofixed --vdw --hbond
 -----------------------------------------------------------------------------------
 
 Paremeters:
@@ -215,27 +243,41 @@ Paremeters:
 
 Processing params/atoms.0.0.6.prm.ms.3cap+0.5ace.Hr0rec... done
 Processing examples/1acb_b_rmin.pdb... done
-Processing examples/1acb_b_rmin.psf, params/parm.prm and params/pdbamino.rtf... 0.470 sec
+Processing examples/1acb_b_rmin.psf, params/parm.prm and params/pdbamino.rtf... 11.190 sec
 Processing examples/1acb_b_rmin.mol2... done
 Fixing acceptor bases... done
 
 ### START: RUN 1 ###
 
-Building nblists... 0.030 sec
-Building octree... 0.010 sec
+Building nblists... 0.040 sec
+Building octree... 0.000 sec
 
 
-Applying LBFGS with NBLISTS ( initial energy = 169.850291 kcal/mol )...
+Applying LBFGS with NBLISTS ( initial energy = 211.864308 kcal/mol )...
 
+*************************************************
+  n = 8385   number of corrections = 5
+       initial values
+ f =  211.864   gnorm =  2241.077
+*************************************************
+	i	nfn	func	gnorm	steplength
+	 1	 2	 -765.476843963687	 858.147101686265	0.000446214001
 
-done ( time = 2.540 sec, final energy = -2991.423359 kcal/mol )
+done ( time = 2.770 sec, final energy = -2463.478129 kcal/mol )
 
 Writing examples/1acb_b_rmin-outn.pdb... done
 
-Applying LBFGS with OCTREES ( initial energy = 169.850291 kcal/mol )...
+Applying LBFGS with OCTREES ( initial energy = 211.864308 kcal/mol )...
 
+*************************************************
+  n = 8385   number of corrections = 5
+       initial values
+ f =  211.864   gnorm =  2241.077
+*************************************************
+	i	nfn	func	gnorm	steplength
+	 1	 2	 -765.476843963680	 858.147101686263	0.000446214001
 
-done ( time = 3.140 sec, final energy = -2991.328588 kcal/mol )
+done ( time = 3.280 sec, final energy = -2463.478128 kcal/mol )
 
 Writing examples/1acb_b_rmin-outo.pdb... done
 
@@ -251,22 +293,22 @@ Distance cutoffs:
 	nblist = 12.00 A
 
 NBLIST results:
-	construction time = 0.030 sec
-	running time = 2.540 sec
+	construction time = 0.040 sec
+	running time = 2.770 sec
 	size = 1969792 bytes ( 1923.62 KB, 1.88 MB ), npairs = 472869
-	initial energy = 169.850291 kcal/mol
-	final energy = -2991.423359 kcal/mol
+	initial energy = 211.864308 kcal/mol
+	final energy = -2463.478129 kcal/mol
 
 OCTREE results:
-	construction time = 0.010 sec
-	running time = 3.140 sec
+	construction time = 0.000 sec
+	running time = 3.280 sec
 	size = 36952 bytes ( 36.09 KB, 0.04 MB )
-	initial energy = 169.850291 kcal/mol
-	final energy = -2991.328588 kcal/mol
+	initial energy = 211.864308 kcal/mol
+	final energy = -2463.478128 kcal/mol
 
 NBLIST vs. OCTREE:
-	construction-time( nblist ) / construction-time( octree ) = 3.00
-	running-time( nblist ) / running-time( octree ) = 0.81
+	construction-time( nblist ) / construction-time( octree ) = inf
+	running-time( nblist ) / running-time( octree ) = 0.84
 	size( nblist ) / size( octree ) = 53.31
 
 ### END: RUN 1 ###
@@ -275,7 +317,7 @@ NBLIST vs. OCTREE:
 ###################################################################################
 
 -----------------------------------------------------------------------------------
-./mintest --pdb examples/1acb_b_rmin.pdb --nofixed --vdw --vdwcut 14 18 --hbond
+./test --pdb examples/1acb_b_rmin.pdb --nofixed --vdw --vdwcut 14 18 --hbond
 -----------------------------------------------------------------------------------
 
 Paremeters:
@@ -297,27 +339,41 @@ Paremeters:
 
 Processing params/atoms.0.0.6.prm.ms.3cap+0.5ace.Hr0rec... done
 Processing examples/1acb_b_rmin.pdb... done
-Processing examples/1acb_b_rmin.psf, params/parm.prm and params/pdbamino.rtf... 0.470 sec
+Processing examples/1acb_b_rmin.psf, params/parm.prm and params/pdbamino.rtf... 11.140 sec
 Processing examples/1acb_b_rmin.mol2... done
 Fixing acceptor bases... done
 
 ### START: RUN 1 ###
 
-Building nblists... 0.040 sec
+Building nblists... 0.050 sec
 Building octree... 0.000 sec
 
 
-Applying LBFGS with NBLISTS ( initial energy = 72.183570 kcal/mol )...
+Applying LBFGS with NBLISTS ( initial energy = 136.410522 kcal/mol )...
 
+*************************************************
+  n = 8385   number of corrections = 5
+       initial values
+ f =  136.411   gnorm =  2241.075
+*************************************************
+	i	nfn	func	gnorm	steplength
+	 1	 2	 -840.925967798315	 858.142746181690	0.000446214512
 
-done ( time = 3.620 sec, final energy = -3089.912854 kcal/mol )
+done ( time = 3.930 sec, final energy = -2534.856432 kcal/mol )
 
 Writing examples/1acb_b_rmin-outn.pdb... done
 
-Applying LBFGS with OCTREES ( initial energy = 72.183570 kcal/mol )...
+Applying LBFGS with OCTREES ( initial energy = 136.410522 kcal/mol )...
 
+*************************************************
+  n = 8385   number of corrections = 5
+       initial values
+ f =  136.411   gnorm =  2241.075
+*************************************************
+	i	nfn	func	gnorm	steplength
+	 1	 2	 -840.925967798341	 858.142746181689	0.000446214512
 
-done ( time = 3.990 sec, final energy = -3089.913529 kcal/mol )
+done ( time = 4.220 sec, final energy = -2534.856433 kcal/mol )
 
 Writing examples/1acb_b_rmin-outo.pdb... done
 
@@ -333,22 +389,22 @@ Distance cutoffs:
 	nblist = 14.00 A
 
 NBLIST results:
-	construction time = 0.040 sec
-	running time = 3.620 sec
+	construction time = 0.050 sec
+	running time = 3.930 sec
 	size = 2787364 bytes ( 2722.04 KB, 2.66 MB ), npairs = 677262
-	initial energy = 72.183570 kcal/mol
-	final energy = -3089.912854 kcal/mol
+	initial energy = 136.410522 kcal/mol
+	final energy = -2534.856432 kcal/mol
 
 OCTREE results:
 	construction time = 0.000 sec
-	running time = 3.990 sec
+	running time = 4.220 sec
 	size = 36952 bytes ( 36.09 KB, 0.04 MB )
-	initial energy = 72.183570 kcal/mol
-	final energy = -3089.913529 kcal/mol
+	initial energy = 136.410522 kcal/mol
+	final energy = -2534.856433 kcal/mol
 
 NBLIST vs. OCTREE:
 	construction-time( nblist ) / construction-time( octree ) = inf
-	running-time( nblist ) / running-time( octree ) = 0.91
+	running-time( nblist ) / running-time( octree ) = 0.93
 	size( nblist ) / size( octree ) = 75.43
 
 ### END: RUN 1 ###
@@ -356,21 +412,35 @@ NBLIST vs. OCTREE:
 
 ### START: RUN 2 ###
 
-Building nblists... 0.050 sec
+Building nblists... 0.070 sec
 Building octree... 0.000 sec
 
 
-Applying LBFGS with NBLISTS ( initial energy = -8.766104 kcal/mol )...
+Applying LBFGS with NBLISTS ( initial energy = 73.865363 kcal/mol )...
 
+*************************************************
+  n = 8385   number of corrections = 5
+       initial values
+ f =  73.865   gnorm =  2241.074
+*************************************************
+	i	nfn	func	gnorm	steplength
+	 1	 2	 -903.469419147881	 858.140495695575	0.000446214676
 
-done ( time = 6.500 sec, final energy = -3171.763243 kcal/mol )
+done ( time = 6.850 sec, final energy = -2602.534250 kcal/mol )
 
 Writing examples/1acb_b_rmin-outn.pdb... done
 
-Applying LBFGS with OCTREES ( initial energy = -8.766104 kcal/mol )...
+Applying LBFGS with OCTREES ( initial energy = 73.865363 kcal/mol )...
 
+*************************************************
+  n = 8385   number of corrections = 5
+       initial values
+ f =  73.865   gnorm =  2241.074
+*************************************************
+	i	nfn	func	gnorm	steplength
+	 1	 2	 -903.469419147933	 858.140495695575	0.000446214676
 
-done ( time = 6.110 sec, final energy = -3173.910400 kcal/mol )
+done ( time = 6.580 sec, final energy = -2602.534251 kcal/mol )
 
 Writing examples/1acb_b_rmin-outo.pdb... done
 
@@ -386,22 +456,22 @@ Distance cutoffs:
 	nblist = 18.00 A
 
 NBLIST results:
-	construction time = 0.050 sec
-	running time = 6.500 sec
+	construction time = 0.070 sec
+	running time = 6.850 sec
 	size = 4748148 bytes ( 4636.86 KB, 4.53 MB ), npairs = 1167458
-	initial energy = -8.766104 kcal/mol
-	final energy = -3171.763243 kcal/mol
+	initial energy = 73.865363 kcal/mol
+	final energy = -2602.534250 kcal/mol
 
 OCTREE results:
 	construction time = 0.000 sec
-	running time = 6.110 sec
+	running time = 6.580 sec
 	size = 36952 bytes ( 36.09 KB, 0.04 MB )
-	initial energy = -8.766104 kcal/mol
-	final energy = -3173.910400 kcal/mol
+	initial energy = 73.865363 kcal/mol
+	final energy = -2602.534251 kcal/mol
 
 NBLIST vs. OCTREE:
 	construction-time( nblist ) / construction-time( octree ) = inf
-	running-time( nblist ) / running-time( octree ) = 1.06
+	running-time( nblist ) / running-time( octree ) = 1.04
 	size( nblist ) / size( octree ) = 128.50
 
 ### END: RUN 2 ###
@@ -410,7 +480,7 @@ NBLIST vs. OCTREE:
 ###################################################################################
 
 -----------------------------------------------------------------------------------
-./mintest --pdb examples/1acb_b_rmin.pdb --nofixed --vdw --vdwaprx 0.5 --hbond
+./test --pdb examples/1acb_b_rmin.pdb --nofixed --vdw --vdwaprx 0.5 --hbond
 -----------------------------------------------------------------------------------
 
 Paremeters:
@@ -432,27 +502,41 @@ Paremeters:
 
 Processing params/atoms.0.0.6.prm.ms.3cap+0.5ace.Hr0rec... done
 Processing examples/1acb_b_rmin.pdb... done
-Processing examples/1acb_b_rmin.psf, params/parm.prm and params/pdbamino.rtf... 0.470 sec
+Processing examples/1acb_b_rmin.psf, params/parm.prm and params/pdbamino.rtf... 11.030 sec
 Processing examples/1acb_b_rmin.mol2... done
 Fixing acceptor bases... done
 
 ### START: RUN 1 ###
 
-Building nblists... 0.030 sec
+Building nblists... 0.040 sec
 Building octree... 0.000 sec
 
 
-Applying LBFGS with NBLISTS ( initial energy = 169.850291 kcal/mol )...
+Applying LBFGS with NBLISTS ( initial energy = 211.864308 kcal/mol )...
 
+*************************************************
+  n = 8385   number of corrections = 5
+       initial values
+ f =  211.864   gnorm =  2241.077
+*************************************************
+	i	nfn	func	gnorm	steplength
+	 1	 2	 -765.476843963687	 858.147101686265	0.000446214001
 
-done ( time = 2.530 sec, final energy = -2991.423359 kcal/mol )
+done ( time = 2.770 sec, final energy = -2463.478129 kcal/mol )
 
 Writing examples/1acb_b_rmin-outn.pdb... done
 
-Applying LBFGS with OCTREES ( initial energy = 175.478645 kcal/mol )...
+Applying LBFGS with OCTREES ( initial energy = 216.247282 kcal/mol )...
 
+*************************************************
+  n = 8385   number of corrections = 5
+       initial values
+ f =  216.247   gnorm =  2241.079
+*************************************************
+	i	nfn	func	gnorm	steplength
+	 1	 2	 -761.099446301330	 858.150418780827	0.000446213669
 
-done ( time = 2.430 sec, final energy = -2982.981208 kcal/mol )
+done ( time = 2.590 sec, final energy = -2457.585563 kcal/mol )
 
 Writing examples/1acb_b_rmin-outo.pdb... done
 
@@ -468,22 +552,22 @@ Distance cutoffs:
 	nblist = 12.00 A
 
 NBLIST results:
-	construction time = 0.030 sec
-	running time = 2.530 sec
+	construction time = 0.040 sec
+	running time = 2.770 sec
 	size = 1969792 bytes ( 1923.62 KB, 1.88 MB ), npairs = 472869
-	initial energy = 169.850291 kcal/mol
-	final energy = -2991.423359 kcal/mol
+	initial energy = 211.864308 kcal/mol
+	final energy = -2463.478129 kcal/mol
 
 OCTREE results:
 	construction time = 0.000 sec
-	running time = 2.430 sec
+	running time = 2.590 sec
 	size = 36952 bytes ( 36.09 KB, 0.04 MB )
-	initial energy = 175.478645 kcal/mol
-	final energy = -2982.981208 kcal/mol
+	initial energy = 216.247282 kcal/mol
+	final energy = -2457.585563 kcal/mol
 
 NBLIST vs. OCTREE:
 	construction-time( nblist ) / construction-time( octree ) = inf
-	running-time( nblist ) / running-time( octree ) = 1.04
+	running-time( nblist ) / running-time( octree ) = 1.07
 	size( nblist ) / size( octree ) = 53.31
 
 ### END: RUN 1 ###

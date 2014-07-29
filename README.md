@@ -3,18 +3,21 @@ octree_example
 
 Installation
 ------------
+Requirements:
+	- icc (or with modifications to the makefile, a version of gcc that has cilk support)
+	- papi ( http://icl.cs.utk.edu/papi/ )
 
 You should first build libmol, then this program
 
-    cd libmol
-    make && make install
+    cd minilibmol
+    make
     cd ..
     make
 
 
 Ths program require the CHARMM19 parameters as found at http://mackerell.umaryland.edu/CHARMM_ff_params.html
 
-You can download the latest prms (e.g. toppar_c36_aug12.tgz ), extract the directory.
+You can download the latest prms (e.g. toppar_c36_dec13.tgz ), extract the directory.
 
 Then, run:
 

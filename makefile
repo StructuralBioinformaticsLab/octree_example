@@ -1,35 +1,30 @@
 _processor = $(shell uname -p)
 
+CC = icc
 MOL_VERSION = 0.0.6
-MOL_INCLUDE ="\"mol.$(MOL_VERSION).h\""
-
+MOL_INCLUDE ="\"minilibmol/mol.$(MOL_VERSION).h\""
 CPPFLAGS := -D _MOL_VERSION_="\"$(MOL_VERSION)\"" -D _MOL_INCLUDE_=$(MOL_INCLUDE) $(CPPFLAGS)
 CPPFLAGS := -D ATOM_PRM="\"atom.$(MOL_VERSION).prm\"" $(CPPFLAGS)
 
-LDFLAGS := -L$(HOME)/lib -L/opt/local/lib  -L/usr/local/lib -Wl,-rpath,/usr/local/lib
-CPPFLAGS := -I$(HOME)/include -I/opt/local/include -I/usr/local/include $(CPPFLAGS)
+LDFLAGS = -L$(HOME)/lib -L/opt/local/lib  -L/usr/local/lib/
+CPPFLAGS := -I$(HOME)/include -I/opt/local/include $(CPPFLAGS)
 
-CFLAGS =  -O3 -Wall -W -Wshadow -Wpointer-arith -Wcast-qual
-LIBS := -lmol.$(MOL_VERSION) -lm $(LIBS)
+CFLAGS =  -O3  -AVX -xhost -parallel -ip -vec-report -ansi-alias -restrict -DVECTORIZE_OCTREE -Wall -W -Wshadow -Wpointer-arith -Wcast-qual
+LIBS := -Lminilibmol -lmol.$(MOL_VERSION) -lm -lpapi $(LIBS)
 
-mintest: 
-	$(CC) $(CPPFLAGS) $(CFLAGS) -c mintest.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) mintest.o $(LIBS) -o mintest
+OBJS = test.o 
 
-papi: 
-	$(CC) $(CPPFLAGS) -D USE_PAPI $(CFLAGS) -c mintest.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) mintest.o $(LIBS) -lpapi -o mintest
+test:	$(OBJS)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJS) $(LIBS) -Xlinker -zmuldefs -o test
+
+%.o: %.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $<
 
 all:
-	mintest
-
-test: 
-	./mintest --pdb examples/1acb_b_rmin.pdb --vdw
-	./mintest --pdb examples/1acb_b_rmin.pdb --nofixed --vdw
-	./mintest --pdb examples/1acb_b_rmin.pdb --nofixed --vdw --hbond	
-	./mintest --pdb examples/1acb_b_rmin.pdb --nofixed --vdw --vdwcut 14 18 --hbond
-	./mintest --pdb examples/1acb_b_rmin.pdb --nofixed --vdw --vdwaprx 0.5 --hbond
+	test
+test.mpi: $(OBJS)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJS) $(LIBS) -o $@
 
 clean:
-	$(RM) mintest.o
-	$(RM) mintest
+	$(RM) $(OBJS)
+	$(RM) test
