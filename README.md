@@ -4,8 +4,8 @@ octree_example
 Installation
 ------------
 Requirements:
-	- icc (or with modifications to the makefile, a version of gcc that has cilk support)
-	- papi ( http://icl.cs.utk.edu/papi/ )
+ * icc (or with modifications to the makefile, a version of gcc that has cilk support)
+ * papi ( http://icl.cs.utk.edu/papi/ )
 
 You should first build libmol, then this program
 
